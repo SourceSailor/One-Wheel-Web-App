@@ -6,12 +6,14 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+// import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+// import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -56,7 +58,9 @@ export default function Navbar() {
           >
             LOGO
           </Typography>
-
+          {/*  */}
+          {/* -------- HAMBERGER MENU --------- */}
+          {/*  */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -86,6 +90,9 @@ export default function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">hi</Typography>
+              </MenuItem>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -113,7 +120,37 @@ export default function Navbar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {/*  */}
+
+            {/* --------- MENU ITEMS --------- */}
+
+            {/*  */}
+            <Switch>
+              <Route>
+                {/* Component for the Products page */}
+                <Typography variant="h6" noWrap>
+                  Products Page Content
+                </Typography>
+              </Route>
+              <Route>
+                {/* Component for the Pricing page */}
+                <Typography variant="h6" noWrap>
+                  Pricing Page Content
+                </Typography>
+              </Route>
+              <Route>
+                {/* Component for the Blog page */}
+                <Typography variant="h6" noWrap>
+                  Blog Page Content
+                </Typography>
+              </Route>
+            </Switch>
+            {/*  */}
+
+            {/* --------- MATERIAL UI CODE --------- */}
+
+            {/*  */}
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -121,10 +158,10 @@ export default function Navbar() {
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+          {/* --------- PROFILE MENU ITEM --------- */}
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -152,7 +189,7 @@ export default function Navbar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
